@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mi Cuenta</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="icon" href="Imagenes/Icon.jpg">
+</head>
+
+<body>
+    <header>
+        <h1>
+            Mi Cuenta
+        </h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="Index.html">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="Comunidades.html">
+                    Comunidades
+                </a>
+            </li>
+
+            <li>
+                <a href="IniciarSesión.html">
+                    Iniciar Sesión
+                </a>
+            </li>
+
+            <li>
+                <a href="Registrarse.html">
+                    Registrarse
+                </a>
+            </li>
+
+            <li>
+                <a href="MiCuenta.html">
+                    Mi Cuenta
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Mostrar los datos actuales del usuario-->
+        <div id="datosActuales">
+            <img id="fotoPerfil" src="ruta/a/imagen_por_defecto.jpg" alt="Foto de Perfil">
+
+            <p>
+                Nombre de Usuario:
+                <span id="nombreUsuario">
+                    Usuario
+                </span>
+            </p>
+
+            <p>
+                Descripción:
+                <span id="descripción">
+                    Descripción
+                </span>
+            </p>
+        </div>
+
+        <!-- Formulario para actualizar los datos del usuario -->
+        <div id="formularioActualizar">
+            <form action="actualizar_datos.php" method="post" enctype="multipart/form-data">
+                <label for="nuevoNombreUsuario">Nuevo Nombre de Usuario:</label>
+                <input type="text" id="nuevoNombreUsuario" name="nuevoNombreUsuario">
+
+                <label for="nuevaDescripcion">Nueva Descripción:</label>
+                <textarea id="nuevaDescripcion" name="nuevaDescripcion"></textarea>
+
+                <label for="nuevaFotoPerfil">Nueva Foto de Perfil:</label>
+                <input type="file" id="nuevaFotoPerfil" name="nuevaFotoPerfil">
+
+                <input type="submit" value="Actualizar Datos">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            &copy; Página creada por Daouy
+        </p>
+    </footer>
+
+</body>
+
+</html>

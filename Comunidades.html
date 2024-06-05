@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Comunidades</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="icon" href="Imagenes/Icon.jpg">
+</head>
+
+<body>
+    <header>
+        <h1>Comunidades</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="Index.html">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="Comunidades.html">
+                    Comunidades
+                </a>
+            </li>
+
+            <li>
+                <a href="IniciarSesión.html">
+                    Iniciar Sesión
+                </a>
+            </li>
+
+            <li>
+                <a href="Registrarse.html">
+                    Registrarse
+                </a>
+            </li>
+
+            <li>
+                <a href="MiCuenta.html">
+                    Mi Cuenta
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="Contenido">
+            <h2>Lista de Comunidades</h2>
+            <div id="comunidadesContainer">
+                <!-- Aquí se cargarán las comunidades -->
+            </div>
+        </div>
+
+        <div class="PanelLateral">
+            <h2>Panel Lateral</h2>
+            <p><b>😎 Musica Fachera del Espacio 😎</b></p>
+            <audio id="audioPlayer" controls>
+                <source src="Tracks/mp3/1 - Astro Reverie.mp3">
+                Tu navegador no soporta la etiqueta de audio.
+            </audio>
+            <ul id="MusicList" class="columnas">
+                <li><button onclick="cambiarCancion('Tracks/mp3/1 - Astro Reverie.mp3')" id="btnMusic">Astro
+                        Reverie</button></li>
+                <li><button onclick="cambiarCancion('Tracks/mp3/2 - Galactic Odyssey.mp3')" id="btnMusic">Galactic
+                        Odyssey</button></li>
+                <li><button onclick="cambiarCancion('Tracks/mp3/3 - Lunar Serenity.mp3')" id="btnMusic">Lunar
+                        Serenity</button></li>
+                <li><button onclick="cambiarCancion('Tracks/mp3/4 - Celestial Echoes.mp3')" id="btnMusic">Celestial
+                        Echoes</button></li>
+                <li><button onclick="cambiarCancion('Tracks/mp3/5 - Stellar Drift.mp3')" id="btnMusic">Stellar
+                        Drift</button></li>
+                <li><button onclick="cambiarCancion('Tracks/mp3/6 - Orbital Echoes.mp3')" id="btnMusic">Orbital
+                        Echoes</button></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Página creada por Daouy</p>
+    </footer>
+
+    <script>
+        function cambiarCancion(ruta) {
+            var Reproductor = document.getElementById('audioPlayer');
+            Reproductor.src = ruta;
+            Reproductor.play();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('get_comunidades.php')
+                .then(response => response.json())
+                .then(data => {
+                    const comunidadesContainer = document.getElementById('comunidadesContainer');
+                    data.forEach(comunidad => {
+                        const comunidadElement = document.createElement('div');
+                        comunidadElement.className = 'comunidad';
+                        comunidadElement.innerHTML = `<a href="ver_comunidad.php?id=${comunidad.id}"><h3>${comunidad.name}</h3></a>`;
+                        comunidadesContainer.appendChild(comunidadElement);
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>
