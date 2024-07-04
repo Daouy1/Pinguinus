@@ -24,21 +24,25 @@
                     Inicio
                 </a>
             </li>
+
             <li>
                 <a href="comunidades.html">
                     Comunidades
                 </a>
             </li>
+
             <li>
-                <a href="iniciarSesion.html">
+                <a href="iniciarSesión.html">
                     Iniciar Sesión
                 </a>
             </li>
+
             <li>
                 <a href="registrarse.html">
                     Registrarse
                 </a>
             </li>
+
             <li>
                 <a href="miCuenta.html">
                     Mi Cuenta
@@ -70,61 +74,56 @@
             </h2>
 
             <p id="Reproductor">
-                <b>😎 Música Fachera del Espacio 😎</b>
+            <p>
+                <b>
+                    😎 Musica Fachera del Espacio 😎
+                </b>
             </p>
             <audio id="audioPlayer" controls>
+                <source src="Tracks/mp3/1 - Astro Reverie.mp3">
                 Tu navegador no soporta la etiqueta de audio.
             </audio>
             <ul id="MusicList" class="columnas">
-                <!-- Aquí se cargarán las canciones de Spotify -->
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/1 - Astro Reverie.mp3')" id="btnMusic">
+                        Astro Reverie
+                    </button>
+                </li>
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/2 - Galactic Odyssey.mp3')" id="btnMusic">
+                        Galactic Odyssey
+                    </button>
+                </li>
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/3 - Lunar Serenity.mp3')" id="btnMusic">
+                        Lunar Serenity
+                    </button>
+                </li>
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/4 - Celestial Echoes.mp3')" id="btnMusic">
+                        Celestial Echoes
+                    </button>
+                </li>
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/5 - Stellar Drift.mp3')" id="btnMusic">
+                        Stellar Drift
+                    </button>
+                </li>
+                <li>
+                    <button onclick="cambiarCancion('Tracks/mp3/6 - Orbital Echoes.mp3')" id="btnMusic">
+                        Orbital Echoes
+                    </button>
+                </li>
             </ul>
 
             <script>
-                async function getSpotifyToken() {
-                    const client_id = '514da01a59054288bc732002cb738242';
-                    const client_secret = '861867b5f40c47838da7d1e0bfa40992';
-                    const response = await fetch('https://accounts.spotify.com/api/token', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
-                        },
-                        body: 'grant_type=client_credentials'
-                    });
-                    const data = await response.json();
-                    return data.access_token;
-                }
-
-                async function getSpotifyTracks(token) {
-                    const response = await fetch('https://api.spotify.com/v1/playlists/1CYzOZGVcj5XuGrwDHpRYS/tracks', {
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    });
-                    const data = await response.json();
-                    return data.items;
-                }
-
                 function cambiarCancion(ruta) {
                     var Reproductor = document.getElementById('audioPlayer');
                     Reproductor.src = ruta;
                     Reproductor.play();
                 }
 
-                document.addEventListener('DOMContentLoaded', async function () {
-                    const token = await getSpotifyToken();
-                    const tracks = await getSpotifyTracks(token);
-                    const musicList = document.getElementById('MusicList');
-
-                    tracks.forEach(track => {
-                        const trackElement = document.createElement('li');
-                        trackElement.innerHTML = `
-                            <button onclick="cambiarCancion('${track.track.preview_url}')" id="btnMusic">
-                                ${track.track.name}
-                            </button>`;
-                        musicList.appendChild(trackElement);
-                    });
-
+                document.addEventListener('DOMContentLoaded', function () {
                     fetch('get_publicaciones.php')
                         .then(response => response.json())
                         .then(data => {
@@ -132,18 +131,30 @@
                             data.forEach(publicacion => {
                                 const publicacionElement = document.createElement('div');
                                 publicacionElement.className = 'publicacion';
-                                publicacionElement.innerHTML = `<a href="ver_publicacion.php?id=${publicacion.id}"><h3>${publicacion.title}</h3></a>`;
+                                publicacionElement.innerHTML = <a href="ver_publicacion.php?id=${publicacion.id}"><h3>${publicacion.title}</h3></a>;
                                 publicacionesContainer.appendChild(publicacionElement);
                             });
                         });
                 });
             </script>
+
+            </p>
         </div>
     </main>
 
     <footer>
-        <p>&copy; Página creada por Daouy</p>
+        <p>
+            &copy; Página creada por Daouy
+        </p>
     </footer>
+
+    <!--
+        
+        Daouy
+
+        El mejor pingüino del mundo
+    
+    -->
 </body>
 
 </html>
