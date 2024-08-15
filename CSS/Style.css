@@ -131,11 +131,6 @@ footer {
 }
 
 /* List */
-/* ul.columnas {
-    column-count: 3;
-    column-gap: 20px;
-} */
-
 ul#MusicList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -146,7 +141,6 @@ ul#MusicList li {
     list-style-type: none;
     text-align: center;
 }
-
 
 /* Additional Styles */
 #publicacionesContainer .publicacion {
