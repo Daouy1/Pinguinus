@@ -24,25 +24,21 @@
                     Inicio
                 </a>
             </li>
-
             <li>
                 <a href="comunidades.html">
                     Comunidades
                 </a>
             </li>
-
             <li>
                 <a href="iniciarSesión.html">
                     Iniciar Sesión
                 </a>
             </li>
-
             <li>
                 <a href="registrarse.html">
                     Registrarse
                 </a>
             </li>
-
             <li>
                 <a href="miCuenta.html">
                     Mi Cuenta
@@ -74,7 +70,6 @@
             </h2>
 
             <p id="Reproductor">
-            <p>
                 <b>
                     😎 Musica Fachera del Espacio 😎
                 </b>
@@ -83,7 +78,7 @@
                 <source src="Tracks/mp3/1 - Astro Reverie.mp3">
                 Tu navegador no soporta la etiqueta de audio.
             </audio>
-            <ul id="MusicList" class="columnas">
+            <ul id="MusicList" class="grid">
                 <li>
                     <button onclick="cambiarCancion('Tracks/mp3/1 - Astro Reverie.mp3')" id="btnMusic">
                         Astro Reverie
@@ -131,14 +126,13 @@
                             data.forEach(publicacion => {
                                 const publicacionElement = document.createElement('div');
                                 publicacionElement.className = 'publicacion';
-                                publicacionElement.innerHTML = <a href="ver_publicacion.php?id=${publicacion.id}"><h3>${publicacion.title}</h3></a>;
+                                publicacionElement.innerHTML = `<a href="ver_publicacion.php?id=${publicacion.id}"><h3>${publicacion.title}</h3></a>`;
                                 publicacionesContainer.appendChild(publicacionElement);
                             });
                         });
                 });
             </script>
 
-            </p>
         </div>
     </main>
 
