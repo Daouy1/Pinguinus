@@ -136,10 +136,17 @@ footer {
     column-gap: 20px;
 } */
 
+ul#MusicList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
 
 ul#MusicList li {
     list-style-type: none;
+    text-align: center;
 }
+
 
 /* Additional Styles */
 #publicacionesContainer .publicacion {
