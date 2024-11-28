@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidades - Pinguinus</title>
+    <link rel="stylesheet" href="CSS/Style.css">
+</head>
+<body>
+    <header>
+        <h1>🐧 Pinguinus 🐧</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="comunidades.html">Comunidades</a></li>
+            <li><a href="iniciarSesión.html">Iniciar Sesión</a></li>
+            <li><a href="registrarse.html">Registrarse</a></li>
+            <li><a href="miCuenta.html">Mi Cuenta</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Comunidades</h2>
+
+        <!-- Sección para crear una nueva comunidad -->
+        <section id="crearComunidad">
+            <h3>Crear una nueva comunidad</h3>
+            <form id="formCrearComunidad" action="crear_comunidad.php" method="POST">
+                <label for="nombreComunidad">Nombre de la comunidad:</label>
+                <input type="text" id="nombreComunidad" name="nombreComunidad" required>
+
+                <label for="descripcionComunidad">Descripción:</label>
+                <textarea id="descripcionComunidad" name="descripcionComunidad" rows="4" required></textarea>
+
+                <input type="submit" value="Crear Comunidad">
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Sección para listar las comunidades -->
+        <section id="listaComunidades">
+            <h3>Comunidades existentes</h3>
+            <div id="comunidadesContainer">
+                <!-- Aquí se cargarán las comunidades dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Página creada por Daouy</p>
+    </footer>
+
+    <script>
+        // Cargar las comunidades existentes
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('get_comunidades.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('comunidadesContainer');
+                    data.forEach(comunidad => {
+                        const comunidadDiv = document.createElement('div');
+                        comunidadDiv.className = 'comunidad';
+                        comunidadDiv.innerHTML = `
+                            <h4><a href="ver_comunidad.php?id=${comunidad.id}">${comunidad.nombre}</a></h4>
+                            <p>${comunidad.descripcion}</p>
+                        `;
+                        container.appendChild(comunidadDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al cargar las comunidades:', error);
+                });
+        });
+    </script>
+</body>
+</html>
