@@ -66,13 +66,7 @@
         <p>&copy; Página creada por Daouy</p>
     </footer>
 
-    <script>
-        function cambiarCancion(ruta) {
-            var Reproductor = document.getElementById('audioPlayer');
-            Reproductor.src = ruta;
-            Reproductor.play();
-        }
-
+    <script><
         document.addEventListener('DOMContentLoaded', function () {
             fetch('get_comunidades.php')
                 .then(response => response.json())
