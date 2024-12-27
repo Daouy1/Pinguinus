@@ -16,6 +16,23 @@
     </header>
 
     <main>
+        <form id="formPublicacion">
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" required>
+    
+    <label for="contenido">Contenido:</label>
+    <textarea id="contenido" name="contenido" rows="5" required></textarea>
+    
+    <label for="imagen">Subir imagen:</label>
+    <input type="file" id="imagen" name="imagen" accept="image/*">
+    
+    <input type="submit" value="Publicar">
+</form>
+
+<div id="errorContainer" style="color: red; display: none;"></div>
+
+<script src="validacion.js"></script>
+
         <div class="Contenido">
             <h2>Últimas Publicaciones</h2>
             <a href="FormPubli.html"><button id="btnPublicar">Publicar</button></a>
