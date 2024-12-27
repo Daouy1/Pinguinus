@@ -51,6 +51,10 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+nav ul li a {
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
 /* Main Content */
 main {
     display: flex;
