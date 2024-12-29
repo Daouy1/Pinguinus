@@ -33,7 +33,6 @@
             <div id="publicacionesContainer">
                 <!-- Aquí se cargarán las publicaciones -->
             </div>
-            <scriptsrc="js/script.js"></script>
         </div>
 
         <div class="PanelLateral">
@@ -46,24 +45,7 @@
         <p>&copy; Página creada por Daouy</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('get_publicaciones.php')
-                .then(response => response.json())
-                .then(data => {
-                    const publicacionesContainer = document.getElementById('publicacionesContainer');
-                    data.forEach(publicacion => {
-                        const publicacionElement = document.createElement('div');
-                        publicacionElement.className = 'publicacion';
-                        publicacionElement.innerHTML = `
-                            <a href="ver_publicacion.php?id=${publicacion.id}">
-                                <h3>${publicacion.title}</h3>
-                            </a>
-                        `;
-                        publicacionesContainer.appendChild(publicacionElement);
-                    });
-                });
-        });
-    </script>
+    <!-- Archivo JavaScript externo -->
+    <script src="js/script.js"></script>
 </body>
 </html>
