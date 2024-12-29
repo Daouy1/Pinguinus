@@ -1,4 +1,4 @@
-/*Javascript del archivo Index.html*/
+/* Javascript del archivo Index.html */
 document.addEventListener('DOMContentLoaded', function () {
     fetch('get_publicaciones.php')
         .then(response => response.json())
@@ -16,3 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 });
+
+/* Javascript del archivo comunidades.html */
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('get_comunidades.php')
+                .then(response => response.json())
+                .then(data => {
+                    const comunidadesContainer = document.getElementById('comunidadesContainer');
+                    data.forEach(comunidad => {
+                        const comunidadElement = document.createElement('div');
+                        comunidadElement.className = 'comunidad';
+                        comunidadElement.innerHTML = `<a href="ver_comunidad.php?id=${comunidad.id}"><h3>${comunidad.name}</h3></a>`;
+                        comunidadesContainer.appendChild(comunidadElement);
+                    });
+                });
+        });
