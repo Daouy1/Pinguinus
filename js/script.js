@@ -17,6 +17,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
+/* Javascript del archivo FormPubli.html */
+document.getElementById('formPublicacion').addEventListener('submit', function (event) {
+    const titulo = document.getElementById('titulo').value.trim();
+    const contenido = document.getElementById('contenido').value.trim();
+    const errorContainer = document.getElementById('errorContainer');
+
+    errorContainer.style.display = 'none';
+    errorContainer.innerHTML = '';
+
+    if (titulo === '' || contenido === '') {
+        event.preventDefault();
+        errorContainer.style.display = 'block';
+        errorContainer.innerHTML = 'Por favor, completa todos los campos obligatorios.';
+    } else if (titulo.length < 5) {
+        event.preventDefault();
+        errorContainer.style.display = 'block';
+        errorContainer.innerHTML = 'El título debe tener al menos 5 caracteres.';
+    }
+});
+
 /* Javascript del archivo comunidades.html */
         document.addEventListener('DOMContentLoaded', function () {
             fetch('get_comunidades.php')
@@ -31,3 +51,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 });
         });
+
+/* Javascript compartidos entre archivos*/
+document.getElementById('searchBar').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const publicaciones = document.querySelectorAll('#publicacionesContainer .publicacion');
+
+    publicaciones.forEach(publicacion => {
+        const titulo = publicacion.querySelector('h3').textContent.toLowerCase();
+        if (titulo.includes(query)) {
+            publicacion.style.display = 'block';
+        } else {
+            publicacion.style.display = 'none';
+        }
+    });
+});
